@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <android.support.design.widget.FloatingActionButton
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:clickable="true"
-      android:id="@+id/fab"
-      android:tint="@android:color/white"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentEnd="true" />
-  <EditText
-      android:layout_toLeftOf="@+id/fab"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentStart="true"
+  <Button
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="Your message"
-      android:id="@+id/input" />
-  <ListView
+      android:id="@+id/viewSchedule"
+      android:text="View Schedule"
+      android:enabled="true" />
+  <Button
+      android:text="Campus Map"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentStart="true"
-      android:layout_above="@+id/fab"
-      android:divider="@android:color/transparent"
-      android:dividerHeight="16dp"
-      android:id="@+id/list_of_messages"
-      android:layout_marginBottom="16dp" />
-</RelativeLayout>
+      android:layout_height="wrap_content"
+      android:id="@+id/campusMap"
+      android:enabled="true" />
+  <Button
+      android:text="Messages"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/messages"
+      android:enabled="true" />
+  <Button
+      android:text="Friends"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/friends"
+      android:enabled="true" />
+  <Button
+      android:text="Admin"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/admin" />
+</LinearLayout>

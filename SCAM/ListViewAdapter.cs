@@ -15,11 +15,11 @@ namespace SCAM
     internal class ListViewAdapter : BaseAdapter
     {
         private List<MessageContent> lstMessage;
-        private MainActivity mainActivity;
+        private MessageActivity messageActivity;
 
-        public ListViewAdapter(MainActivity mainActivity, List<MessageContent> lstMessage)
+        public ListViewAdapter(MessageActivity messageActivity, List<MessageContent> lstMessage)
         {
-            this.mainActivity = mainActivity;
+            this.messageActivity = messageActivity;
             this.lstMessage = lstMessage;
         }
 
@@ -43,7 +43,7 @@ namespace SCAM
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            LayoutInflater inflater = (LayoutInflater)mainActivity.BaseContext.GetSystemService(Context.LayoutInflaterService);
+            LayoutInflater inflater = (LayoutInflater)messageActivity.BaseContext.GetSystemService(Context.LayoutInflaterService);
             View itemView = inflater.Inflate(Resource.Layout.List_Item, null);
 
             TextView message_user, message_time, message_content;
