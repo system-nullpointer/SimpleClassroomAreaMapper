@@ -47,7 +47,7 @@ namespace SCAM
             var btnRegister = FindViewById<Button>(Resource.Id.btnRegister);
             btnRegister.Click += delegate {
                 auth.CreateUserWithEmailAndPassword(edtEmail.Text, edtPassword.Text)
-                .AddOnCompleteListener(this);
+                .AddOnCompleteListener(this);                
             };
         }
     }

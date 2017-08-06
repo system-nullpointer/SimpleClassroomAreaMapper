@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:textAlignment="center">
+  <TextView
+      android:text="First Name:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/firstLabel"
+      android:layout_marginTop="@dimen/abc_action_bar_content_inset_material" />
+  <!--<android.support.design.widget.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInputEditText1"
+        android:hint="Enter First Name Here"
+        android:gravity="center"
+        android:inputType="textCapWords"
+        android:background="@android:color/white"
+        android:foreground="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:editable="true" /> -->
+  <EditText
+      android:id="@+id/firstBox"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="textCapWords"
+      android:hint="Enter First Name Here"
+      android:layout_marginBottom="@dimen/abc_action_bar_default_height_material" />
+  <TextView
+      android:text="Last Name:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/lastLabel" />
+  <EditText
+      android:id="@+id/lastBox"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="textCapWords"
+      android:hint="Enter Last Name Here" />
+  <Button
+      android:text="Search"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/searchBtn"
+      android:layout_marginTop="@dimen/abc_action_bar_stacked_tab_max_width" />
+</LinearLayout>

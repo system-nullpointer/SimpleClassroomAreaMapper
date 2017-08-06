@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>nicks</name>
+    <Style id="poly-000000-1200-77-normal">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-000000-1200-77-highlight">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-000000-1200-77">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-000000-1200-77-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-000000-1200-77-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name><![CDATA[Nick's]]></name>
+      <description><![CDATA[Nick's hall]]></description>
+      <styleUrl>#poly-000000-1200-77</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -82.3680713,36.3022128,0
+              -82.3679707,36.302069,0
+              -82.367842,36.3021274,0
+              -82.3678614,36.3021577,0
+              -82.3675905,36.3022765,0
+              -82.3677575,36.3025181,0
+              -82.3677072,36.3025392,0
+              -82.3677608,36.3026175,0
+              -82.3676596,36.3026635,0
+              -82.3677588,36.3028061,0
+              -82.3679942,36.3026981,0
+              -82.368019,36.3027343,0
+              -82.3680948,36.3026991,0
+              -82.368074,36.3026689,0
+              -82.3683067,36.3025586,0
+              -82.3682081,36.3024127,0
+              -82.3682463,36.3023971,0
+              -82.3682128,36.3023495,0
+              -82.3682403,36.3023365,0
+              -82.3681672,36.3022317,0
+              -82.3681437,36.3022436,0
+              -82.3681089,36.3021966,0
+              -82.3680713,36.3022128,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

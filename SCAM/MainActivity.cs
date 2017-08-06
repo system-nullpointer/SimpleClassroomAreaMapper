@@ -15,13 +15,9 @@ using Firebase;
 namespace SCAM
 {
     [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
-    public class MainActivity : AppCompatActivity, IValueEventListener
+    public class MainActivity : AppCompatActivity//, IValueEventListener
     {
         private FirebaseClient firebase;
-        private List<MessageContent> lstMessage = new List<MessageContent>();
-        private ListView lstChat;
-        private EditText edtChat;
-        private FloatingActionButton fab;
 
         public int MyResultCode = 1;
 
@@ -33,58 +29,59 @@ namespace SCAM
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            //updated this to SignIn instead of Main
             SetContentView(Resource.Layout.Main);
 
             firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
             FirebaseApp.InitializeApp(this);
-            FirebaseDatabase.Instance.GetReference("chats").AddValueEventListener(this);
+            List<Student> availableStudents = Helper.createStudents();
+            Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
+            Button friendsButton = FindViewById<Button>(Resource.Id.friends);
+            Button messagesButton = FindViewById<Button>(Resource.Id.messages);
 
-            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            edtChat = FindViewById<EditText>(Resource.Id.input);
-            lstChat = FindViewById<ListView>(Resource.Id.list_of_messages);
-
-            fab.Click += delegate
+            friendsButton.Click += (sender, e) =>
             {
-                PostMessage();
+
+                var intent = new Intent(this, typeof(FriendsList));
+                StartActivity(intent);
             };
+
+            messagesButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(MessageActivity));
+                StartActivity(intent);
+            };
+
+            campusMapButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(CampusMap));
+                StartActivity(intent);
+            };
+
+            //button object of view schedule
+            Button viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
+
+            //handling on click of view schedule button(sending to ScheduleActivity)
+            viewScheduleButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(ScheduleActivity));
+                StartActivity(intent);
+
+            };
+
 
             if (FirebaseAuth.Instance.CurrentUser == null)
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             else
             {
                 Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
-                DisplayChatMessage();
+                //Removed this piece as this is moving into the messagins portion of the app.
+                //DisplayChatMessage();
+                //StartActivityForResult(new Android.Content.Intent(this, typeof(MainActivity)), MyResultCode);
             }
         }
 
-        private async void PostMessage()
-        {
-            var items = await firebase.Child("chats").PostAsync(new MessageContent(FirebaseAuth.Instance.CurrentUser.Email, edtChat.Text));
-            edtChat.Text = "";
-        }
 
-        public void OnCancelled(DatabaseError error)
-        {
-
-        }
-
-        public void OnDataChange(DataSnapshot snapshot)
-        {
-            DisplayChatMessage();
-        }
-
-        private async void DisplayChatMessage()
-        {
-            lstMessage.Clear();
-            var items = await firebase.Child("chats")
-                .OnceAsync<MessageContent>();
-
-            foreach (var item in items)
-                lstMessage.Add(item.Object);
-            ListViewAdapter adapter = new ListViewAdapter(this, lstMessage);
-            lstChat.Adapter = adapter;
-        }
     
     }
 }
