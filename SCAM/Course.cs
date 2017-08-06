@@ -29,15 +29,6 @@ namespace SCAM
         public String roomNumber { get; set; }
         public String instructorName { get; set; }
 
-        public override string ToString()
-        {
-            string courseOutput = String.Empty;
-            courseOutput += $"\nCousrse Name: {courseName}";
-            courseOutput += $"\nCRN: {CRN}";
-            courseOutput += $"\nBuilding: {buildingName}";
-            courseOutput += $"\nRoom Number: {roomNumber}";
-            courseOutput += $"\nInstructor: {instructorName}";
-            return courseOutput;
-        }
+
     }
 }

@@ -3,59 +3,59 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="CRN:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/CRNLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/CRNText" />
-    <TextView
-        android:text="Course Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/courseNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/courseNameText" />
-    <TextView
-        android:text="Building Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buildingNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buildingNameText" />
-    <TextView
-        android:text="Room Number:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNumberLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNumberText" />
-    <TextView
-        android:text="Instructor Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructorNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructorNameText" />
-    <Button
-        android:text="Add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addToCoursesButton" />
+  <TextView
+      android:text="CRN:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/CRNLabel" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/CRNText" />
+  <TextView
+      android:text="Course Name:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/courseNameLabel" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/courseNameText" />
+  <TextView
+      android:text="Building Name:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/buildingNameLabel" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/buildingNameText" />
+  <TextView
+      android:text="Room Number:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/roomNumberLabel" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/roomNumberText" />
+  <TextView
+      android:text="Instructor Name:"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/instructorNameLabel" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/instructorNameText" />
+  <Button
+      android:text="Add"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/addToCoursesButton" />
 </LinearLayout>
