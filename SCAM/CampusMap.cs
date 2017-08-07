@@ -144,7 +144,7 @@ namespace SCAM
 
             //Get the devices last known location
             _locationManager = (LocationManager)GetSystemService(LocationService);
-            _currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
+            //_currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
 
             //Set the default view for ETSU when the user opens the map
             LatLng location = new LatLng(BuildingLocations.nicksLat, BuildingLocations.nicksLong);

@@ -52,8 +52,8 @@ namespace SCAM
             public override void OnBackPressed()
             {
                 base.OnBackPressed();
-                var intent = new Intent(this, typeof(MainActivity));
-                StartActivity(intent);
+                //var intent = new Intent(this, typeof(MainActivity));
+                //StartActivity(intent);
                 Finish();
             }
     }
