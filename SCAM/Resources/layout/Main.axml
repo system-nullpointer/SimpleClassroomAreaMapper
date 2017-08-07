@@ -3,33 +3,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/viewSchedule"
-      android:text="View Schedule"
-      android:enabled="true" />
-  <Button
-      android:text="Campus Map"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/campusMap"
-      android:enabled="true" />
-  <Button
-      android:text="Messages"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/messages"
-      android:enabled="true" />
-  <Button
-      android:text="Friends"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/friends"
-      android:enabled="true" />
-  <Button
-      android:text="Admin"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/admin" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewSchedule"
+        android:text="View Schedule"
+        android:enabled="true" />
+    <Button
+        android:text="Campus Map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/campusMap"
+        android:enabled="true" />
+    <Button
+        android:text="Messages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messages"
+        android:enabled="true" />
+    <Button
+        android:text="Friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/friends"
+        android:enabled="true" />
+    <!--<Button
+        android:text="Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/admin" />-->
 </LinearLayout>

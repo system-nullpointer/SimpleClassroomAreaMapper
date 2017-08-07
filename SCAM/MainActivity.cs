@@ -14,7 +14,7 @@ using Firebase;
 
 namespace SCAM
 {
-    [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light")]
     public class MainActivity : AppCompatActivity//, IValueEventListener
     {
         private FirebaseClient firebase;
@@ -73,11 +73,10 @@ namespace SCAM
             if (FirebaseAuth.Instance.CurrentUser == null)
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             else
-            {
-                Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
+            {  
                 //Removed this piece as this is moving into the messagins portion of the app.
                 //DisplayChatMessage();
-                //StartActivityForResult(new Android.Content.Intent(this, typeof(MainActivity)), MyResultCode);
+                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             }
         }
 

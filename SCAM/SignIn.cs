@@ -16,7 +16,7 @@ using Android.Util;
 
 namespace SCAM
 {
-    [Activity(Label = "SignIn",Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    [Activity(Label = "SCAM Sign In",Theme = "@style/Theme.AppCompat.Light")]
     public class SignIn : AppCompatActivity, IOnCompleteListener
     {
         FirebaseAuth auth;
@@ -25,13 +25,13 @@ namespace SCAM
         {
             if (task.IsSuccessful)
             {
+                Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
                 Toast.MakeText(this, "SignIn successfully !", ToastLength.Short).Show();
                 Finish();
             }
             else
             {
-                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();
-                Finish();
+                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();                
             }
         }
         protected override void OnCreate(Bundle savedInstanceState)
@@ -45,10 +45,15 @@ namespace SCAM
             var edtEmail = FindViewById<EditText>(Resource.Id.edtEmail);
             var edtPassword = FindViewById<EditText>(Resource.Id.edtPassword);
             var btnRegister = FindViewById<Button>(Resource.Id.btnRegister);
-            btnRegister.Click += delegate {
-                auth.CreateUserWithEmailAndPassword(edtEmail.Text, edtPassword.Text)
-                .AddOnCompleteListener(this);                
+
+            var user = auth.CurrentUser;
+
+            btnRegister.Click += delegate 
+            {
+                auth.SignInWithEmailAndPassword(edtEmail.Text, edtPassword.Text)
+                .AddOnCompleteListener(this);
             };
+         
         }
     }
 }
