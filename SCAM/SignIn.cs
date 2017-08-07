@@ -55,5 +55,13 @@ namespace SCAM
             };
          
         }
+
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            var intent = new Intent(this, typeof(SignIn));
+            StartActivity(intent);
+            Finish();
+        }
     }
 }
