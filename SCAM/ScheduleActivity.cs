@@ -24,32 +24,30 @@ namespace SCAM
 
                 Student student = Student.getStudent();
 
-
-
                 //populates list for viewSchedule
                 // ListAdapter = new ArrayAdapter<Course>(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
                 SetContentView(Resource.Layout.viewSchedule);
-                List<String> _courseName = new List<String>();
+                List<String> course = new List<String>();
 
                 foreach (var item in student.Courses)
                 {
-                    _courseName.Add(item.courseName);
+                    course.Add(item.ToString());
                 }
 
-                ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, _courseName);
+                ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, course);
+           
 
+                Button addCourseButton = FindViewById<Button>(Resource.Id.addNewCourseButton);    
 
-                Button addCourseButton = FindViewById<Button>(Resource.Id.addNewCourseButton);
-
-
+            
                 addCourseButton.Click += (sender, e) =>
                 {
                     var intent = new Intent(this, typeof(addCourseActivity));
                     StartActivity(intent);
 
-                };
+                };               
 
-            }
+             }
 
             public override void OnBackPressed()
             {
@@ -58,8 +56,6 @@ namespace SCAM
                 StartActivity(intent);
                 Finish();
             }
-
-
-        }
+    }
     
 }

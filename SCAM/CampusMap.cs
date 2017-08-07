@@ -90,7 +90,7 @@ namespace SCAM
                 {
                     case "nicks":
                         buildingMarker.SetPosition(new LatLng(BuildingLocations.nicksLat, BuildingLocations.nicksLong));
-                        buildingMarker.SetTitle("Nicks Halll");
+                        buildingMarker.SetTitle("Nicks Hall");
                         allBuildings.Add(buildingMarker);
 
                         break;
