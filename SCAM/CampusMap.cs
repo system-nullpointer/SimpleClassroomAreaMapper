@@ -42,6 +42,15 @@ namespace SCAM
             {
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.CampusMapLayout);
+                Button viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
+
+                viewScheduleButton.Click += (sender, e) =>
+                {
+                    var intent = new Intent(this, typeof(ScheduleActivity));
+                    StartActivity(intent);
+
+                };
+
 
                 //Add the map fragment (the map itself) to the android layout
                 _mapFragment = FragmentManager.FindFragmentByTag("map") as MapFragment;
