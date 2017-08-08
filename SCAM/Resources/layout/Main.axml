@@ -27,9 +27,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/friends"
         android:enabled="true" />
-    <!--<Button
+<Button
         android:text="Admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/admin" />-->
+        android:id="@+id/admin" />
 </LinearLayout>

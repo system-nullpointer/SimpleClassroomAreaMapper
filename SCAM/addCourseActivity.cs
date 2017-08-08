@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace SCAM
 {
-    [Activity(Label = "addCourseActivity")]
+    [Activity(Label = "Add Course Activity")]
     public class addCourseActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

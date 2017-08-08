@@ -14,6 +14,7 @@ using Firebase;
 
 namespace SCAM
 {
+    
     [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light")]
     public class MainActivity : AppCompatActivity//, IValueEventListener
     {
@@ -38,6 +39,7 @@ namespace SCAM
             Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
             Button friendsButton = FindViewById<Button>(Resource.Id.friends);
             Button messagesButton = FindViewById<Button>(Resource.Id.messages);
+            Button adminButton = FindViewById<Button>(Resource.Id.admin);
 
             friendsButton.Click += (sender, e) =>
             {
@@ -45,6 +47,15 @@ namespace SCAM
                 var intent = new Intent(this, typeof(FriendsList));
                 StartActivity(intent);
             };
+
+            adminButton.Click += (sender, e) =>
+            {
+                var uri = Android.Net.Uri.Parse("https://accounts.google.com/signin/v2/identifier?passive=true&continue=https%3A%2F%2Ffirebase.google.com%2F%3Frefresh%3D1&service=ahsid&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+
+                var intent = new Intent(Intent.ActionView, uri);
+                StartActivity(intent);
+            };
+
 
             messagesButton.Click += (sender, e) =>
             {
