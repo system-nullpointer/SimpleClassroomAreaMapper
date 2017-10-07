@@ -44,5 +44,10 @@ namespace SCAM
 
             return available;
         }
+
+        public static void CreateUserKeyInDatabase(Firebase.Database.FirebaseDatabase databaseReference)
+        {
+           
+        }
     }
 }

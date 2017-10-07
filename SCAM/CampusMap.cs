@@ -71,7 +71,7 @@ namespace SCAM
             catch (Exception e)
             {
                 //Give the user enough time to view the exception
-                Console.WriteLine(e.ToString());
+                Toast.MakeText(this, e.Message, ToastLength.Long).Show();                
                 System.Threading.Thread.Sleep(20000);
                 throw;
             }
