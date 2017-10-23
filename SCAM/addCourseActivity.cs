@@ -43,19 +43,20 @@ namespace SCAM
 
                 var intent = new Intent(this, typeof(ScheduleActivity));
                 StartActivity(intent);
-
+                Finish();
 
             };
 
         }
-
+    
+        /*
         public override void OnBackPressed()
         {
             base.OnBackPressed();
-            //var intent = new Intent(this, typeof(ScheduleActivity));
-            //StartActivity(intent);
+            var intent = new Intent(this, typeof(MainActivity));
+            StartActivity(intent);
             Finish();
         }
-
+        */
     }
 }

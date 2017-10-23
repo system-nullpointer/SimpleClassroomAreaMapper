@@ -44,7 +44,7 @@ namespace SCAM
                 {
                     var intent = new Intent(this, typeof(addCourseActivity));
                     StartActivity(intent);
-
+                    Finish();
                 };               
 
              }
