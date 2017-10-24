@@ -40,7 +40,6 @@ namespace SCAM
             Button friendsButton = FindViewById<Button>(Resource.Id.friends);
             Button messagesButton = FindViewById<Button>(Resource.Id.messages);
             Button adminButton = FindViewById<Button>(Resource.Id.admin);
-            Button viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
 
             friendsButton.Click += (sender, e) =>
             {
@@ -69,7 +68,9 @@ namespace SCAM
                 var intent = new Intent(this, typeof(CampusMap));
                 StartActivity(intent);
             };
-           
+
+            //button object of view schedule
+            Button viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
 
             //handling on click of view schedule button(sending to ScheduleActivity)
             viewScheduleButton.Click += (sender, e) =>
@@ -80,21 +81,18 @@ namespace SCAM
             };
 
 
-            
-            //if (FirebaseAuth.Instance.CurrentUser == null)
+            if (FirebaseAuth.Instance.CurrentUser == null)
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
-            /*
             else
             {  
                 //Removed this piece as this is moving into the messagins portion of the app.
                 //DisplayChatMessage();
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             }
-            */   
         }
 
 
-
+    
     }
 }
 
