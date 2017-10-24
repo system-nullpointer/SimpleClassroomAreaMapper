@@ -13,10 +13,11 @@ using Android.Support.V7.App;
 using Firebase.Auth;
 using Android.Gms.Tasks;
 using Android.Util;
+using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "SCAM Sign In",Theme = "@style/Theme.AppCompat.Light")]
+    [Activity(Label = "SCAM Sign In",Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignIn : AppCompatActivity, IOnCompleteListener
     {
         FirebaseAuth auth;

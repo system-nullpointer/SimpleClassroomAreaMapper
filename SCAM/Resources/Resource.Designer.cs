@@ -2345,8 +2345,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0096
 			public const int CRNText = 2131493014;
 			
-			// aapt resource value: 0x7f0c00ad
-			public const int action0 = 2131493037;
+			// aapt resource value: 0x7f0c00ae
+			public const int action0 = 2131493038;
 			
 			// aapt resource value: 0x7f0c006f
 			public const int action_bar = 2131492975;
@@ -2369,17 +2369,17 @@ namespace SCAM
 			// aapt resource value: 0x7f0c004c
 			public const int action_bar_title = 2131492940;
 			
-			// aapt resource value: 0x7f0c00aa
-			public const int action_container = 2131493034;
+			// aapt resource value: 0x7f0c00ab
+			public const int action_container = 2131493035;
 			
 			// aapt resource value: 0x7f0c0070
 			public const int action_context_bar = 2131492976;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int action_divider = 2131493041;
+			// aapt resource value: 0x7f0c00b2
+			public const int action_divider = 2131493042;
 			
-			// aapt resource value: 0x7f0c00ab
-			public const int action_image = 2131493035;
+			// aapt resource value: 0x7f0c00ac
+			public const int action_image = 2131493036;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int action_menu_divider = 2131492872;
@@ -2396,11 +2396,11 @@ namespace SCAM
 			// aapt resource value: 0x7f0c004e
 			public const int action_mode_close_button = 2131492942;
 			
-			// aapt resource value: 0x7f0c00ac
-			public const int action_text = 2131493036;
+			// aapt resource value: 0x7f0c00ad
+			public const int action_text = 2131493037;
 			
-			// aapt resource value: 0x7f0c00ba
-			public const int actions = 2131493050;
+			// aapt resource value: 0x7f0c00bb
+			public const int actions = 2131493051;
 			
 			// aapt resource value: 0x7f0c004f
 			public const int activity_chooser_view_content = 2131492943;
@@ -2408,8 +2408,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0043
 			public const int add = 2131492931;
 			
-			// aapt resource value: 0x7f0c00c4
-			public const int addNewCourseButton = 2131493060;
+			// aapt resource value: 0x7f0c00c5
+			public const int addNewCourseButton = 2131493061;
 			
 			// aapt resource value: 0x7f0c009f
 			public const int addToCoursesButton = 2131493023;
@@ -2419,6 +2419,9 @@ namespace SCAM
 			
 			// aapt resource value: 0x7f0c0016
 			public const int adjust_width = 2131492886;
+			
+			// aapt resource value: 0x7f0c00a7
+			public const int admin = 2131493031;
 			
 			// aapt resource value: 0x7f0c0063
 			public const int alertTitle = 2131492963;
@@ -2441,8 +2444,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0022
 			public const int bottom = 2131492898;
 			
-			// aapt resource value: 0x7f0c00c3
-			public const int btnRegister = 2131493059;
+			// aapt resource value: 0x7f0c00c4
+			public const int btnRegister = 2131493060;
 			
 			// aapt resource value: 0x7f0c0099
 			public const int buildingNameLabel = 2131493017;
@@ -2456,8 +2459,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c00a4
 			public const int campusMap = 2131493028;
 			
-			// aapt resource value: 0x7f0c00ae
-			public const int cancel_action = 2131493038;
+			// aapt resource value: 0x7f0c00af
+			public const int cancel_action = 2131493039;
 			
 			// aapt resource value: 0x7f0c0023
 			public const int center = 2131492899;
@@ -2471,8 +2474,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0066
 			public const int checkbox = 2131492966;
 			
-			// aapt resource value: 0x7f0c00b6
-			public const int chronometer = 2131493046;
+			// aapt resource value: 0x7f0c00b7
+			public const int chronometer = 2131493047;
 			
 			// aapt resource value: 0x7f0c002e
 			public const int clip_horizontal = 2131492910;
@@ -2528,17 +2531,17 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0071
 			public const int edit_query = 2131492977;
 			
-			// aapt resource value: 0x7f0c00c1
-			public const int edtEmail = 2131493057;
-			
 			// aapt resource value: 0x7f0c00c2
-			public const int edtPassword = 2131493058;
+			public const int edtEmail = 2131493058;
+			
+			// aapt resource value: 0x7f0c00c3
+			public const int edtPassword = 2131493059;
 			
 			// aapt resource value: 0x7f0c0026
 			public const int end = 2131492902;
 			
-			// aapt resource value: 0x7f0c00c0
-			public const int end_padder = 2131493056;
+			// aapt resource value: 0x7f0c00c1
+			public const int end_padder = 2131493057;
 			
 			// aapt resource value: 0x7f0c001d
 			public const int enterAlways = 2131492893;
@@ -2555,8 +2558,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0065
 			public const int expanded_menu = 2131492965;
 			
-			// aapt resource value: 0x7f0c00a7
-			public const int fab = 2131493031;
+			// aapt resource value: 0x7f0c00a8
+			public const int fab = 2131493032;
 			
 			// aapt resource value: 0x7f0c0030
 			public const int fill = 2131492912;
@@ -2591,8 +2594,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0054
 			public const int icon = 2131492948;
 			
-			// aapt resource value: 0x7f0c00bb
-			public const int icon_group = 2131493051;
+			// aapt resource value: 0x7f0c00bc
+			public const int icon_group = 2131493052;
 			
 			// aapt resource value: 0x7f0c0017
 			public const int icon_only = 2131492887;
@@ -2603,11 +2606,11 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0051
 			public const int image = 2131492945;
 			
-			// aapt resource value: 0x7f0c00b7
-			public const int info = 2131493047;
+			// aapt resource value: 0x7f0c00b8
+			public const int info = 2131493048;
 			
-			// aapt resource value: 0x7f0c00a8
-			public const int input = 2131493032;
+			// aapt resource value: 0x7f0c00a9
+			public const int input = 2131493033;
 			
 			// aapt resource value: 0x7f0c009d
 			public const int instructorNameLabel = 2131493021;
@@ -2633,11 +2636,11 @@ namespace SCAM
 			// aapt resource value: 0x7f0c001c
 			public const int light = 2131492892;
 			
-			// aapt resource value: 0x7f0c00bc
-			public const int line1 = 2131493052;
+			// aapt resource value: 0x7f0c00bd
+			public const int line1 = 2131493053;
 			
-			// aapt resource value: 0x7f0c00be
-			public const int line3 = 2131493054;
+			// aapt resource value: 0x7f0c00bf
+			public const int line3 = 2131493055;
 			
 			// aapt resource value: 0x7f0c003b
 			public const int listMode = 2131492923;
@@ -2645,17 +2648,17 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0053
 			public const int list_item = 2131492947;
 			
-			// aapt resource value: 0x7f0c00a9
-			public const int list_of_messages = 2131493033;
+			// aapt resource value: 0x7f0c00aa
+			public const int list_of_messages = 2131493034;
 			
 			// aapt resource value: 0x7f0c0086
 			public const int map = 2131492998;
 			
-			// aapt resource value: 0x7f0c00c6
-			public const int masked = 2131493062;
+			// aapt resource value: 0x7f0c00c7
+			public const int masked = 2131493063;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int media_actions = 2131493040;
+			// aapt resource value: 0x7f0c00b1
+			public const int media_actions = 2131493041;
 			
 			// aapt resource value: 0x7f0c00a3
 			public const int message_text = 2131493027;
@@ -2690,14 +2693,14 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0012
 			public const int normal = 2131492882;
 			
-			// aapt resource value: 0x7f0c00b9
-			public const int notification_background = 2131493049;
+			// aapt resource value: 0x7f0c00ba
+			public const int notification_background = 2131493050;
+			
+			// aapt resource value: 0x7f0c00b4
+			public const int notification_main_column = 2131493044;
 			
 			// aapt resource value: 0x7f0c00b3
-			public const int notification_main_column = 2131493043;
-			
-			// aapt resource value: 0x7f0c00b2
-			public const int notification_main_column_container = 2131493042;
+			public const int notification_main_column_container = 2131493043;
 			
 			// aapt resource value: 0x7f0c0088
 			public const int okayButton = 2131493000;
@@ -2723,11 +2726,11 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0029
 			public const int right = 2131492905;
 			
-			// aapt resource value: 0x7f0c00b8
-			public const int right_icon = 2131493048;
+			// aapt resource value: 0x7f0c00b9
+			public const int right_icon = 2131493049;
 			
-			// aapt resource value: 0x7f0c00b4
-			public const int right_side = 2131493044;
+			// aapt resource value: 0x7f0c00b5
+			public const int right_side = 2131493045;
 			
 			// aapt resource value: 0x7f0c009b
 			public const int roomNumberLabel = 2131493019;
@@ -2837,8 +2840,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c002a
 			public const int start = 2131492906;
 			
-			// aapt resource value: 0x7f0c00af
-			public const int status_bar_latest_event_content = 2131493039;
+			// aapt resource value: 0x7f0c00b0
+			public const int status_bar_latest_event_content = 2131493040;
 			
 			// aapt resource value: 0x7f0c0069
 			public const int submenuarrow = 2131492969;
@@ -2855,11 +2858,11 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0014
 			public const int terrain = 2131492884;
 			
-			// aapt resource value: 0x7f0c00bf
-			public const int text = 2131493055;
+			// aapt resource value: 0x7f0c00c0
+			public const int text = 2131493056;
 			
-			// aapt resource value: 0x7f0c00bd
-			public const int text2 = 2131493053;
+			// aapt resource value: 0x7f0c00be
+			public const int text2 = 2131493054;
 			
 			// aapt resource value: 0x7f0c005d
 			public const int textSpacerNoButtons = 2131492957;
@@ -2876,8 +2879,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0001
 			public const int textinput_error = 2131492865;
 			
-			// aapt resource value: 0x7f0c00b5
-			public const int time = 2131493045;
+			// aapt resource value: 0x7f0c00b6
+			public const int time = 2131493046;
 			
 			// aapt resource value: 0x7f0c0055
 			public const int title = 2131492949;
@@ -2915,8 +2918,8 @@ namespace SCAM
 			// aapt resource value: 0x7f0c0002
 			public const int view_offset_helper = 2131492866;
 			
-			// aapt resource value: 0x7f0c00c5
-			public const int visible = 2131493061;
+			// aapt resource value: 0x7f0c00c6
+			public const int visible = 2131493062;
 			
 			// aapt resource value: 0x7f0c0084
 			public const int webview = 2131492996;
