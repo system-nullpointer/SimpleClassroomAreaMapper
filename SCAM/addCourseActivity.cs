@@ -39,16 +39,14 @@ namespace SCAM
 
                 student.addCourse(Course);
 
-
-
                 var intent = new Intent(this, typeof(ScheduleActivity));
                 StartActivity(intent);
-
+                Finish();
 
             };
 
         }
-
+/*
         public override void OnBackPressed()
         {
             base.OnBackPressed();
@@ -56,6 +54,6 @@ namespace SCAM
             //StartActivity(intent);
             Finish();
         }
-
+*/
     }
 }

@@ -81,14 +81,14 @@ namespace SCAM
             };
 
 
-            if (FirebaseAuth.Instance.CurrentUser == null)
+            //if (FirebaseAuth.Instance.CurrentUser == null)
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
-            else
-            {  
+            //else
+            //{  
                 //Removed this piece as this is moving into the messagins portion of the app.
                 //DisplayChatMessage();
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
-            }
+            //}
         }
 
 
