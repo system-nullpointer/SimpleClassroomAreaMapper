@@ -15,10 +15,11 @@ using Android.Gms.Maps;
 using System.IO;
 using Android.Gms.Maps.Model;
 using Android.Locations;
+using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "Campus Map")]
+    [Activity(Label = "Campus Map", ScreenOrientation = ScreenOrientation.Portrait)]
     public class CampusMap : Activity, IOnMapReadyCallback
     {
         public MapFragment _mapFragment;
@@ -71,7 +72,7 @@ namespace SCAM
             catch (Exception e)
             {
                 //Give the user enough time to view the exception
-                Console.WriteLine(e.ToString());
+                Toast.MakeText(this, e.Message, ToastLength.Long).Show();                
                 System.Threading.Thread.Sleep(20000);
                 throw;
             }

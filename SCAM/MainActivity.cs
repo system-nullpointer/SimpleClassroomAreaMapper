@@ -11,21 +11,24 @@ using Android.Content;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Firebase;
+using Android.Content.PM;
+using System.Linq;
 
 namespace SCAM
 {
     
-    [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light")]
+    [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity//, IValueEventListener
     {
         private FirebaseClient firebase;
+        private DatabaseReference _database;
+        private List<string> _databaseKeyValue;
+
 
         public int MyResultCode = 1;
+        private bool isSignedIn = false;
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-        }
+       
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -33,8 +36,6 @@ namespace SCAM
             //updated this to SignIn instead of Main
             SetContentView(Resource.Layout.Main);
 
-            firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
-            FirebaseApp.InitializeApp(this);
             List<Student> availableStudents = Helper.createStudents();
             Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
             Button friendsButton = FindViewById<Button>(Resource.Id.friends);
@@ -42,6 +43,27 @@ namespace SCAM
             Button adminButton = FindViewById<Button>(Resource.Id.admin);
             Button viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
 
+            if (FirebaseAuth.Instance.CurrentUser == null)
+                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
+
+            if (SignIn.isSignedIn == false)
+            {
+                firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
+            }
+            FirebaseApp.InitializeApp(this);
+
+            _database = FirebaseDatabase.Instance.Reference;
+            // _database.Child("users").Child("Andrew").AddListenerForSingleValueEvent(this);
+
+            if (IsAdmin(_database,"E00402949"))
+            {
+                adminButton.Visibility = Android.Views.ViewStates.Visible;
+                adminButton.Clickable = true;
+            }
+
+            //DataSnapshot.
+
+            
 
             friendsButton.Click += (sender, e) =>
             {
@@ -81,6 +103,19 @@ namespace SCAM
             };
 
 
+           
+           
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+
+        public void OnDataChange(DataSnapshot snapshot)
+        {
+            GetChildren(snapshot);
             //if (FirebaseAuth.Instance.CurrentUser == null)
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             //else
@@ -92,7 +127,39 @@ namespace SCAM
         }
 
 
-    
+        public void OnCancelled(DatabaseError error)
+        {
+            //Not sure what to do about OnCancelled
+            throw new NotImplementedException();
+        }
+
+        public void GetChildren(DataSnapshot snapshot)
+        {
+            if (snapshot == null) return;
+
+            var snapshotChildren = snapshot.Children;
+            List<string> childValues = new List<string>();
+
+            //Go through each child on the key
+            foreach (DataSnapshot s in snapshotChildren.ToEnumerable())
+            {
+                //Get the values for the child attributes from the database
+                childValues.Add(s.Value.ToString());
+            }
+            _databaseKeyValue = childValues;
+        }
+        public bool IsAdmin(DatabaseReference databaseReference, string eNumber)
+        {
+            if (databaseReference == null)
+            {
+
+            }
+            //databaseReference.Child("users").Child(eNumber).AddValueEventListener(this);
+            return true;
+        }
+
     }
+    
+
 }
 
