@@ -147,7 +147,7 @@ namespace SCAM
             {
 
             }
-            databaseReference.Child("users").Child(eNumber).AddValueEventListener(this);
+            //databaseReference.Child("users").Child(eNumber).AddValueEventListener(this);
             return true;
         }
 
