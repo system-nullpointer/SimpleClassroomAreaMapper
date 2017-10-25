@@ -34,6 +34,16 @@ namespace SCAM
             base.OnCreate(bundle);
             //updated this to SignIn instead of Main
             SetContentView(Resource.Layout.Main);
+
+            List<Student> availableStudents = Helper.createStudents();
+            Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
+            Button friendsButton = FindViewById<Button>(Resource.Id.friends);
+            Button messagesButton = FindViewById<Button>(Resource.Id.messages);
+            Button adminButton = FindViewById<Button>(Resource.Id.admin);
+
+            if (FirebaseAuth.Instance.CurrentUser == null)
+                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
+
             if (SignIn.isSignedIn == false)
             {
                 firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
@@ -41,17 +51,17 @@ namespace SCAM
             FirebaseApp.InitializeApp(this);
 
             _database = FirebaseDatabase.Instance.Reference;
-            _database.Child("users").Child("Andrew").AddListenerForSingleValueEvent(this);
+            // _database.Child("users").Child("Andrew").AddListenerForSingleValueEvent(this);
 
-            
+            if (IsAdmin(_database,"E00402949"))
+            {
+                adminButton.Visibility = Android.Views.ViewStates.Visible;
+                adminButton.Clickable = true;
+            }
 
             //DataSnapshot.
 
-            List<Student> availableStudents = Helper.createStudents();
-            Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
-            Button friendsButton = FindViewById<Button>(Resource.Id.friends);
-            Button messagesButton = FindViewById<Button>(Resource.Id.messages);
-            Button adminButton = FindViewById<Button>(Resource.Id.admin);
+            
 
             friendsButton.Click += (sender, e) =>
             {
@@ -93,14 +103,8 @@ namespace SCAM
             };
 
 
-            if (FirebaseAuth.Instance.CurrentUser == null)
-                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
-            else
-            {  
-                //Removed this piece as this is moving into the messagins portion of the app.
-                //DisplayChatMessage();
-                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
-            }
+           
+           
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -136,6 +140,16 @@ namespace SCAM
             }
             _databaseKeyValue = childValues;
         }
+        public bool IsAdmin(DatabaseReference databaseReference, string eNumber)
+        {
+            if (databaseReference == null)
+            {
+
+            }
+            databaseReference.Child("users").Child(eNumber).AddValueEventListener(this);
+            return true;
+        }
+
     }
     
 

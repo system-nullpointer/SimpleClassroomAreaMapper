@@ -13,6 +13,7 @@ using Android.Support.V7.App;
 using Firebase.Auth;
 using Android.Gms.Tasks;
 using Android.Util;
+using Firebase.Database;
 
 namespace SCAM
 {
@@ -20,12 +21,13 @@ namespace SCAM
     public class CreateAccountActivity : Activity, IOnCompleteListener
     {
         FirebaseAuth auth;
+        public string _firstName;
+        public string _lastName;
         public string _email;
         public string _password;
         public string _passwordToBeVerified;
-        
-        
-        
+        public string _eNumber;
+        private DatabaseReference _database;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,6 +35,9 @@ namespace SCAM
             SetContentView(Resource.Layout.CreateAccountLayout);
 
             Button submitButton = FindViewById<Button>(Resource.Id.submit);
+            EditText firstName = FindViewById<EditText>(Resource.Id.firstName);
+            EditText lastName = FindViewById<EditText>(Resource.Id.lastName);
+            EditText eNumber = FindViewById<EditText>(Resource.Id.eNumber);
             EditText email = FindViewById<EditText>(Resource.Id.emailAddress);
             EditText password = FindViewById<EditText>(Resource.Id.password);
             EditText passwordToBeVerified = FindViewById<EditText>(Resource.Id.passwordToBeVerified);
@@ -40,20 +45,26 @@ namespace SCAM
             
             submitButton.Click += (sender,e) =>
             {
+                _firstName = firstName.Text;
+                _lastName = lastName.Text;
+                _eNumber = eNumber.Text;
                 _email = email.Text;
                 _password = password.Text;
                 _passwordToBeVerified = passwordToBeVerified.Text;
+
+
                 if (!_password.Equals(_passwordToBeVerified))
                 {
                     Toast.MakeText(this, "Passwords do not match ", ToastLength.Short).Show();
                     return;
                 }
-                auth.CreateUserWithEmailAndPassword(email.Text, password.Text).AddOnCompleteListener(this);
+                auth.CreateUserWithEmailAndPassword(_email, _password).AddOnCompleteListener(this);
+                _database = FirebaseDatabase.Instance.Reference;
+
+                _database.Child("users").Push().SetValue($"{_eNumber}");
 
             };
-            //auth.CreateUserWithEmailAndPassword
-
-            // Create your application here
+            
         }
         
 
@@ -81,6 +92,15 @@ namespace SCAM
                 throw;
             }
            
+        }
+
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            var intent = new Intent(this, typeof(SignIn));
+            StartActivity(intent);
+            Finish();
+
         }
     }
 }
