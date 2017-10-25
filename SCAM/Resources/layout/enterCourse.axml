@@ -12,7 +12,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/CRNText" />
+        android:id="@+id/CRNText"
+        android:singleLine="true" />
     <TextView
         android:text="Course Name:"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -22,7 +23,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/courseNameText" />
+        android:id="@+id/courseNameText"
+        android:singleLine="true" />
     <TextView
         android:text="Building Name:"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -32,7 +34,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buildingNameText" />
+        android:id="@+id/buildingNameText"
+        android:singleLine="true" />
     <TextView
         android:text="Room Number:"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -42,7 +45,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/roomNumberText" />
+        android:id="@+id/roomNumberText"
+        android:singleLine="true" />
     <TextView
         android:text="Instructor Name:"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -52,7 +56,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/instructorNameText" />
+        android:id="@+id/instructorNameText"
+        android:singleLine="true" />
     <Button
         android:text="Add"
         android:layout_width="match_parent"

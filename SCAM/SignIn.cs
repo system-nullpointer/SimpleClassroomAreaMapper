@@ -21,19 +21,6 @@ namespace SCAM
     {
         FirebaseAuth auth;
 
-        public void OnComplete(Task task)
-        {
-            if (task.IsSuccessful)
-            {
-                Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
-                Toast.MakeText(this, "SignIn successfully !", ToastLength.Short).Show();
-                Finish();
-            }
-            else
-            {
-                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();                
-            }
-        }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -56,6 +43,19 @@ namespace SCAM
          
         }
 
+        public void OnComplete(Task task)
+        {
+            if (task.IsSuccessful)
+            {
+                Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
+                Toast.MakeText(this, "SignIn successful!", ToastLength.Short).Show();
+                Finish();
+            }
+            else
+            {
+                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();
+            }
+        }
         public override void OnBackPressed()
         {
             base.OnBackPressed();
