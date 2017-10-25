@@ -9,10 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "FriendsList")]
+    [Activity(Label = "FriendsList", ScreenOrientation = ScreenOrientation.Portrait)]
     public class FriendsList : ListActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

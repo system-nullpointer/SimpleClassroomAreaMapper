@@ -11,13 +11,14 @@ using Android.Content;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Firebase;
+using Android.Content.PM;
 using System.Linq;
 
 namespace SCAM
 {
     
-    [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light")]
-    public class MainActivity : AppCompatActivity, IValueEventListener 
+    [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
+    public class MainActivity : AppCompatActivity//, IValueEventListener
     {
         private FirebaseClient firebase;
         private DatabaseReference _database;

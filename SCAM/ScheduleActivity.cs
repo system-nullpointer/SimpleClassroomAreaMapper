@@ -9,10 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "Current Schedule")]
+    [Activity(Label = "Current Schedule", ScreenOrientation = ScreenOrientation.Portrait)]
     public class ScheduleActivity : ListActivity
         {
             Course[] items;

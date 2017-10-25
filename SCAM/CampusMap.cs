@@ -15,10 +15,11 @@ using Android.Gms.Maps;
 using System.IO;
 using Android.Gms.Maps.Model;
 using Android.Locations;
+using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "Campus Map")]
+    [Activity(Label = "Campus Map", ScreenOrientation = ScreenOrientation.Portrait)]
     public class CampusMap : Activity, IOnMapReadyCallback
     {
         public MapFragment _mapFragment;
