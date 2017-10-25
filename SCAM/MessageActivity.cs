@@ -14,10 +14,11 @@ using Firebase.Database;
 using Firebase.Auth;
 using Android.Support.Design.Widget;
 using Firebase;
+using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "MessageActivity", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    [Activity(Label = "MessageActivity", Theme = "@style/Theme.AppCompat.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MessageActivity : AppCompatActivity, IValueEventListener
     {
         private FirebaseClient firebase;

@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
+﻿using Android.App;
 using Android.Widget;
+using Android.OS;
+using Android.Support.V7.App;
+using Firebase.Xamarin.Database;
+using System.Collections.Generic;
+using Firebase.Database;
+using System;
+using Firebase.Auth;
+using Android.Content;
+using Android.Runtime;
+using Android.Support.Design.Widget;
+using Firebase;
+using System.Linq;
 
 namespace SCAM
 {
@@ -44,5 +47,7 @@ namespace SCAM
 
             return available;
         }
+
+        
     }
 }
