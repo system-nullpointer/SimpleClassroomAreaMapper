@@ -96,7 +96,7 @@ namespace SCAM
             foreach (var item in courses)
             {
                 MarkerOptions buildingMarker = new MarkerOptions();
-                switch (item.buildingName.ToLower())
+                switch (item.BuildingName.ToLower())
                 {
                     case "nicks":
                         buildingMarker.SetPosition(new LatLng(BuildingLocations.nicksLat, BuildingLocations.nicksLong));

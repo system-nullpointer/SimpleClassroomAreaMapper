@@ -26,14 +26,15 @@ namespace SCAM
 
             addButton.Click += (sender, e) =>
             {
-                var CRN = FindViewById<EditText>(Resource.Id.CRNText).Text;
-                var courseName = FindViewById<EditText>(Resource.Id.courseNameText).Text;
+                var courseID = FindViewById<EditText>(Resource.Id.CRNText).Text;
+                var courseTitle = FindViewById<EditText>(Resource.Id.courseNameText).Text;
+                String instructorName = FindViewById<EditText>(Resource.Id.instructorNameText).Text;
                 var buildingName = FindViewById<EditText>(Resource.Id.buildingNameText).Text;
                 var roomNumber = FindViewById<EditText>(Resource.Id.roomNumberText).Text;
-                var instructorName = FindViewById<EditText>(Resource.Id.instructorNameText).Text;
+                string days = FindViewById<EditText>(Resource.Id.daysHeldText).Text;
+                string time = FindViewById<EditText>(Resource.Id.timeText).Text;
 
-
-                var Course = new Course(CRN, courseName, buildingName, roomNumber, instructorName);
+                var Course = new Course(courseID, courseTitle, instructorName, buildingName, roomNumber, days, time);
                 Student student;
 
                 student = Student.getStudent();

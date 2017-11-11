@@ -17,7 +17,7 @@ using Android.Content.PM;
 
 namespace SCAM
 {
-    [Activity(Label = "SCAM Sign In",Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "SCAM Sign In", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignIn : AppCompatActivity, IOnCompleteListener
     {
         FirebaseAuth auth;
@@ -34,7 +34,7 @@ namespace SCAM
             else
             {
                 isSignedIn = false;
-                Toast.MakeText(this, "Sign In failed!", ToastLength.Short).Show();                
+                Toast.MakeText(this, "Sign In failed!", ToastLength.Short).Show();
             }
         }
         protected override void OnCreate(Bundle savedInstanceState)
@@ -52,30 +52,24 @@ namespace SCAM
 
 
             var user = auth.CurrentUser;
-            
-            btnRegister.Click += delegate 
+
+            btnRegister.Click += delegate
             {
                 auth.SignInWithEmailAndPassword(edtEmail.Text, edtPassword.Text)
                 .AddOnCompleteListener(this);
             };
 
             createUserButton.Click += CreateUserButton_Click;
-         
+
         }
 
-        public void OnComplete(Task task)
+        private void CreateUserButton_Click(object sender, EventArgs e)
         {
-            if (task.IsSuccessful)
-            {
-                Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
-                Toast.MakeText(this, "SignIn successful!", ToastLength.Short).Show();
-                Finish();
-            }
-            else
-            {
-                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();
-            }
+            var intent = new Intent(this, typeof(CreateAccountActivity));
+            StartActivity(intent);
+            Finish();
         }
+
         public override void OnBackPressed()
         {
             base.OnBackPressed();

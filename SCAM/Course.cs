@@ -14,29 +14,53 @@ namespace SCAM
 {
     public class Course
     {
+        public String CourseID { get; set; }  //includes course number and section
+        public String CourseTitle { get; set; }
+        public String BuildingName { get; set; }
+        public String RoomNumber { get; set; }
+        public String InstructorName { get; set; }
+        public String DaysHeld { get; set; }
+        //public String StartTime { get; set; }
+        //public String StartMeridiem { get; set; }
+        //public String EndTime { get; set; }
+        //public String EndMeridiem { get; set; }
+        public String Time { get; set; }
+        //public String StartDate { get; set; }
+        //public String EndDate { get; set; }
 
-        public Course(string crn, string coursename, string buildingname, string roomnumber, string instructorname)
+        public Course(string courseID, string courseTitle, string instructorName, string bldgName, 
+            string roomNumber, string days, /*string startTime, string startMeridiem, string endTime,
+            string endMeridiem,  string startDate, string endDate,*/ string time)
         {
-            this.CRN = crn;
-            this.courseName = coursename;
-            this.buildingName = buildingname;
-            this.roomNumber = roomnumber;
-            this.instructorName = instructorname;
+            CourseID = courseID;
+            CourseTitle = courseTitle;
+            InstructorName = instructorName;
+            BuildingName = bldgName;
+            RoomNumber = roomNumber;
+            DaysHeld = days;
+            //StartTime = startTime;
+            //StartMeridiem = startMeridiem;
+            //EndTime = endTime;
+            //EndMeridiem = EndMeridiem;
+            Time = time;
+            //StartDate = startDate;
+            //EndDate = endDate;
         }
-        public String CRN { get; set; }
-        public String courseName { get; set; }
-        public String buildingName { get; set; }
-        public String roomNumber { get; set; }
-        public String instructorName { get; set; }
 
         public override string ToString()
         {
-            string courseOutput = String.Empty;
-            courseOutput += $"\nCousrse Name: {courseName}";
-            courseOutput += $"\nCRN: {CRN}";
-            courseOutput += $"\nBuilding: {buildingName}";
-            courseOutput += $"\nRoom Number: {roomNumber}";
-            courseOutput += $"\nInstructor: {instructorName}";
+            string courseOutput = "";
+            courseOutput += $"\nCourse ID: {CourseID}"
+                        + $"\nCourse Title: {CourseTitle}"
+                        + $"\nInstructor: {InstructorName}"
+                        + $"\nBuilding: {BuildingName}"
+                        + $"\nRoom: {RoomNumber}"
+                        + $"\nDays: {DaysHeld}"
+                        //+ $"\nTime: {StartTime} {StartMeridiem} - {EndTime} {EndMeridiem}"
+                        + $"\nTime: {Time}";
+                        //+ $"\nStartDate: {StartDate}"
+                        //+ $"\nEnd Date: {EndDate}";
+
             return courseOutput;
         }
     }

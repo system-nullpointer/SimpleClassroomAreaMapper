@@ -5,15 +5,17 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <ListView
-      android:minWidth="25px"
-      android:minHeight="25px"
-      android:layout_width="match_parent"
-      android:layout_height="180.0dp"
-      android:id="@android:id/list" />
-  <Button
-      android:text="Add new Course"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/addNewCourseButton" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@android:id/list"
+        android:layoutMode="opticalBounds"
+        android:smoothScrollbar="false" />
+    <Button
+        android:text="Add new Course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addNewCourseButton" />
 </LinearLayout>

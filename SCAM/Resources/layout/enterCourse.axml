@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="CRN:"
+        android:text="Course (dept. number-section):"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:id="@+id/CRNText"
         android:singleLine="true" />
     <TextView
-        android:text="Course Name:"
+        android:text="Course Title:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,18 @@
         android:id="@+id/courseNameText"
         android:singleLine="true" />
     <TextView
-        android:text="Building Name:"
+        android:text="Instructor:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/instructorNameLabel" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/instructorNameText"
+        android:singleLine="true" />
+    <TextView
+        android:text="Building:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +48,7 @@
         android:id="@+id/buildingNameText"
         android:singleLine="true" />
     <TextView
-        android:text="Room Number:"
+        android:text="Room:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,15 +59,26 @@
         android:id="@+id/roomNumberText"
         android:singleLine="true" />
     <TextView
-        android:text="Instructor Name:"
+        android:text="Days:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/instructorNameLabel" />
+        android:id="@+id/DaysLabel" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/instructorNameText"
+        android:id="@+id/daysHeldText"
+        android:singleLine="true" />
+    <TextView
+        android:text="Time (00:00 - 00:00 am/pm):"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TimeLabel" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeText"
         android:singleLine="true" />
     <Button
         android:text="Add"
