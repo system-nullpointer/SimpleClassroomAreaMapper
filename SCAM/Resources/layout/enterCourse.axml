@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:actionBarNavMode="tabs">
     <TextView
-        android:text="Course (dept. number-section):"
+        android:text="Course ('deptID' 'number-section'):"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,75 +16,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/CRNText"
         android:singleLine="true" />
-    <TextView
-        android:text="Course Title:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/courseNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/courseNameText"
-        android:singleLine="true" />
-    <TextView
-        android:text="Instructor:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructorNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructorNameText"
-        android:singleLine="true" />
-    <TextView
-        android:text="Building:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buildingNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buildingNameText"
-        android:singleLine="true" />
-    <TextView
-        android:text="Room:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNumberLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNumberText"
-        android:singleLine="true" />
-    <TextView
-        android:text="Days:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/DaysLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/daysHeldText"
-        android:singleLine="true" />
-    <TextView
-        android:text="Time (00:00 - 00:00 am/pm):"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/TimeLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/timeText"
-        android:singleLine="true" />
     <Button
-        android:text="Add"
+        android:text="Add New Course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addToCoursesButton" />
+    <Button
+        android:text="Import Active Registrations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/importActiveRegsitrations" />
 </LinearLayout>

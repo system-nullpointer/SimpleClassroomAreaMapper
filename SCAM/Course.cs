@@ -20,17 +20,14 @@ namespace SCAM
         public String RoomNumber { get; set; }
         public String InstructorName { get; set; }
         public String DaysHeld { get; set; }
-        //public String StartTime { get; set; }
-        //public String StartMeridiem { get; set; }
-        //public String EndTime { get; set; }
-        //public String EndMeridiem { get; set; }
-        public String Time { get; set; }
-        //public String StartDate { get; set; }
-        //public String EndDate { get; set; }
+        public String StartTime { get; set; }
+        public String EndTime { get; set; }
+        public String StartDate { get; set; }
+        public String EndDate { get; set; }
 
         public Course(string courseID, string courseTitle, string instructorName, string bldgName, 
-            string roomNumber, string days, /*string startTime, string startMeridiem, string endTime,
-            string endMeridiem,  string startDate, string endDate,*/ string time)
+            string roomNumber, string days, string startTime, string endTime,
+            string startDate, string endDate)
         {
             CourseID = courseID;
             CourseTitle = courseTitle;
@@ -38,13 +35,10 @@ namespace SCAM
             BuildingName = bldgName;
             RoomNumber = roomNumber;
             DaysHeld = days;
-            //StartTime = startTime;
-            //StartMeridiem = startMeridiem;
-            //EndTime = endTime;
-            //EndMeridiem = EndMeridiem;
-            Time = time;
-            //StartDate = startDate;
-            //EndDate = endDate;
+            StartTime = startTime;
+            EndTime = endTime;
+            StartDate = startDate;
+            EndDate = endDate;
         }
 
         public override string ToString()
@@ -56,10 +50,9 @@ namespace SCAM
                         + $"\nBuilding: {BuildingName}"
                         + $"\nRoom: {RoomNumber}"
                         + $"\nDays: {DaysHeld}"
-                        //+ $"\nTime: {StartTime} {StartMeridiem} - {EndTime} {EndMeridiem}"
-                        + $"\nTime: {Time}";
-                        //+ $"\nStartDate: {StartDate}"
-                        //+ $"\nEnd Date: {EndDate}";
+                        + $"\nTime: {StartTime} - {EndTime}"
+                        + $"\nStartDate: {StartDate}"
+                        + $"\nEnd Date: {EndDate}";
 
             return courseOutput;
         }

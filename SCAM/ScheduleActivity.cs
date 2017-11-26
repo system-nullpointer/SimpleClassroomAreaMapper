@@ -45,18 +45,26 @@ namespace SCAM
                 {
                     var intent = new Intent(this, typeof(addCourseActivity));
                     StartActivity(intent);
-                    Finish();
+                    
+                    //Finish();
                 };               
-
+                
              }
-
+            protected override void OnResume()
+            {
+                base.OnResume();
+                Student demo = Student.getStudent();
+                ListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, demo.Courses);
+            }
+        /*
             public override void OnBackPressed()
             {
                 base.OnBackPressed();
-                //var intent = new Intent(this, typeof(MainActivity));
-                //StartActivity(intent);
+                var intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
                 Finish();
             }
+            */
     }
     
 }
