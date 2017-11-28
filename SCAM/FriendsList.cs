@@ -78,32 +78,40 @@ namespace SCAM
 
         private void FriendsList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-
-            List<Student> studentList = Helper.available;
-
-            var vItem = friendsList.GetItemAtPosition(e.Position);
-            String emailMessage = Helper.getEmail(vItem.ToString());
-            if (emailMessage.Contains("."))
+            try
             {
-                emailMessage = emailMessage.Replace(".", "");
-            }
-            String emailCurrent = SignIn.currentUserEmail;
-            if (emailCurrent.Contains("."))
-            {
-                emailCurrent = emailCurrent.Replace(".", "");
-            }
-            int order = emailCurrent.CompareTo(emailMessage);
-            if (order >= 0)
-            {
-                currentChatRoom = emailCurrent + emailMessage;
-            }
-            else
-            {
-                currentChatRoom = emailMessage + emailCurrent;
-            }
+                List<Student> studentList = Helper.available;
+
+                var vItem = friendsList.GetItemAtPosition(e.Position);
+                String emailMessage = Helper.getEmail(vItem.ToString());
+                if (emailMessage.Contains("."))
+                {
+                    emailMessage = emailMessage.Replace(".", "");
+                }
+                String emailCurrent = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Email;
+
+                if (emailCurrent.Contains("."))
+                {
+                    emailCurrent = emailCurrent.Replace(".", "");
+                }
+                int order = emailCurrent.CompareTo(emailMessage);
+                if (order >= 0)
+                {
+                    currentChatRoom = emailCurrent + emailMessage;
+                }
+                else
+                {
+                    currentChatRoom = emailMessage + emailCurrent;
+                }
 
 
-            StartActivity(typeof(MessageActivity));
+                StartActivity(typeof(MessageActivity));
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+            }
+           
 
 
 
