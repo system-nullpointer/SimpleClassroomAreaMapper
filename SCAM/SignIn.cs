@@ -20,6 +20,7 @@ namespace SCAM
     [Activity(Label = "SCAM Sign In",Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignIn : AppCompatActivity, IOnCompleteListener
     {
+        public static string currentUserEmail;
         FirebaseAuth auth;
 
         public void OnComplete(Task task)
@@ -28,6 +29,14 @@ namespace SCAM
             {
                 Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
                 Toast.MakeText(this, "SignIn successfully !", ToastLength.Short).Show();
+                var user = FirebaseAuth.Instance.CurrentUser;
+                if (user != null)
+                {
+
+                    var name = user.DisplayName;
+                    currentUserEmail = user.Email.ToString();
+                }
+
                 Finish();
             }
             else

@@ -81,6 +81,16 @@ namespace SCAM
 
             _Courses.Add(course);
         }
+        public Student(string firstName, string lastName, string id, string email)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            ID = id;
+            Email = email;
+            IsEnabled = true;
+            Friends = new List<Student>();
+            Courses = new List<Course>();
+        }
 
         public static Student FindStudentByID(string id, IEnumerable<Student> students)
         {
