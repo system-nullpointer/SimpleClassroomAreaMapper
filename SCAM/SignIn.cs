@@ -22,11 +22,12 @@ namespace SCAM
     {
         public static string currentUserEmail;
         FirebaseAuth auth;
-
+        public static volatile bool isSignedIn = false;
         public void OnComplete(Task task)
         {
             if (task.IsSuccessful)
             {
+                isSignedIn = true;
                 Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
                 Toast.MakeText(this, "SignIn successfully !", ToastLength.Short).Show();
                 var user = FirebaseAuth.Instance.CurrentUser;
@@ -41,7 +42,8 @@ namespace SCAM
             }
             else
             {
-                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();                
+                isSignedIn = false;
+                Toast.MakeText(this, "Sign In failed!", ToastLength.Short).Show();                
             }
         }
         protected override void OnCreate(Bundle savedInstanceState)
@@ -55,15 +57,26 @@ namespace SCAM
             var edtEmail = FindViewById<EditText>(Resource.Id.edtEmail);
             var edtPassword = FindViewById<EditText>(Resource.Id.edtPassword);
             var btnRegister = FindViewById<Button>(Resource.Id.btnRegister);
+            Button createUserButton = FindViewById<Button>(Resource.Id.createAccountButton);
+
 
             var user = auth.CurrentUser;
-
+            
             btnRegister.Click += delegate 
             {
                 auth.SignInWithEmailAndPassword(edtEmail.Text, edtPassword.Text)
                 .AddOnCompleteListener(this);
             };
+
+            createUserButton.Click += CreateUserButton_Click;
          
+        }
+
+        private void CreateUserButton_Click(object sender, EventArgs e)
+        {
+            var intent = new Intent(this, typeof(CreateAccountActivity));
+            StartActivity(intent);
+            Finish();
         }
 
         public override void OnBackPressed()
@@ -73,5 +86,13 @@ namespace SCAM
             StartActivity(intent);
             Finish();
         }
+
+        //protected override void OnResume()
+        //{
+        //    //base.OnResume();
+        //   // var intent = new Intent(this, typeof(MainActivity));
+        //   // StartActivity(intent);
+
+        //}
     }
 }
