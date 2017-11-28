@@ -23,6 +23,8 @@ namespace SCAM
         private List<Student> availableStudents;
 
         private Student demo;
+        public static string currentChatRoom;
+        private ListView friendsList;
 
         public List<Student> AvailableStudents
         {
@@ -34,11 +36,11 @@ namespace SCAM
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            demo = Student.getStudent();
+
 
             FriendPosition = -1;
 
-            Student demo = Student.getStudent();
+            demo = Student.getStudent();
             List<Student> availableStudents = Helper.available;
             //friendsList = FindViewById<ListView>(Android.Resource.Id.List);
 
