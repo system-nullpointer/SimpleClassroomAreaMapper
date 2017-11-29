@@ -27,6 +27,7 @@ namespace SCAM
             if (task.IsSuccessful)
             {
                 isSignedIn = true;
+                MainActivity._currentEmail = FirebaseAuth.Instance.CurrentUser.Email;
                 Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
                 Toast.MakeText(this, "Sign In successfully !", ToastLength.Short).Show();
                 Finish();

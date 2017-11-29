@@ -18,17 +18,22 @@ namespace SCAM
 {
     
     [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity//, IValueEventListener
+    public class MainActivity :  Activity
     {
         private FirebaseClient firebase;
         private DatabaseReference _database;
         private List<string> _databaseKeyValue;
-
-
         public int MyResultCode = 1;
         private bool isSignedIn = false;
+        public static volatile string _currentEmail;
 
-       
+        //This dictionary will hold the email addresses of current users and determine if they are an admin or not
+        private List<string> AdminList = new List<string>();
+
+        private Button campusMapButton;
+        private Button friendsButton;
+        private Button messagesButton;
+        private Button adminButton;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -37,32 +42,32 @@ namespace SCAM
             SetContentView(Resource.Layout.Main);
 
             List<Student> availableStudents = Helper.createStudents();
-            Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
-            Button friendsButton = FindViewById<Button>(Resource.Id.friends);
-            Button messagesButton = FindViewById<Button>(Resource.Id.messages);
-            Button adminButton = FindViewById<Button>(Resource.Id.admin);
+
+            campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
+            friendsButton = FindViewById<Button>(Resource.Id.friends);
+            messagesButton = FindViewById<Button>(Resource.Id.messages);
+            adminButton= FindViewById<Button>(Resource.Id.admin);
+
+            //Disable the admin button initially
+            adminButton.Visibility = Android.Views.ViewStates.Invisible;
+            adminButton.Clickable = true;
+
+            //This will be used for demonstration purposes. We can fix this later
+            //AdminList.Add("andrewb2495@gmail.com");
 
             if (FirebaseAuth.Instance.CurrentUser == null)
-                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
+            {
+                StartActivity(new Android.Content.Intent(this, typeof(SignIn)));
+            }
 
             if (SignIn.isSignedIn == false)
             {
                 firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
             }
+
             FirebaseApp.InitializeApp(this);
-
             _database = FirebaseDatabase.Instance.Reference;
-            // _database.Child("users").Child("Andrew").AddListenerForSingleValueEvent(this);
 
-            if (IsAdmin(_database,"E00402949"))
-            {
-                adminButton.Visibility = Android.Views.ViewStates.Visible;
-                adminButton.Clickable = true;
-            }
-
-            //DataSnapshot.
-
-            
 
             friendsButton.Click += (sender, e) =>
             {
@@ -102,10 +107,19 @@ namespace SCAM
                 StartActivity(intent);
 
             };
-
-
            
-           
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            //If the current user is an admin, then display the admin button
+            if (AdminList.Contains(_currentEmail) && adminButton != null && _currentEmail != null)
+            {
+                adminButton.Visibility = Android.Views.ViewStates.Visible;
+                adminButton.Clickable = true;
+            }
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -140,16 +154,7 @@ namespace SCAM
                 childValues.Add(s.Value.ToString());
             }
             _databaseKeyValue = childValues;
-        }
-        public bool IsAdmin(DatabaseReference databaseReference, string eNumber)
-        {
-            if (databaseReference == null)
-            {
-
-            }
-            databaseReference.Child("users").Child(eNumber).AddValueEventListener(this);
-            return true;
-        }
+        }      
 
     }
     
