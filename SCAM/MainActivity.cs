@@ -13,6 +13,8 @@ using Android.Support.Design.Widget;
 using Firebase;
 using Android.Content.PM;
 using System.Linq;
+using Android.Support.V4.App;
+using Android;
 
 namespace SCAM
 {
@@ -40,6 +42,18 @@ namespace SCAM
             base.OnCreate(bundle);
             //updated this to SignIn instead of Main
             SetContentView(Resource.Layout.Main);
+
+
+            //If the permissions are not set fir the map, then prompt the user for the proper permissions
+            if (CheckCallingOrSelfPermission(Manifest.Permission.AccessCoarseLocation) != Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 1);
+            }
+
+            if (CheckCallingOrSelfPermission(Manifest.Permission.WriteExternalStorage) != Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 1);
+            }
 
             List<Student> availableStudents = Helper.createStudents();
 
