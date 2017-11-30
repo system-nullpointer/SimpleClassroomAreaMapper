@@ -36,96 +36,106 @@ namespace SCAM
         private Button friendsButton;
         //private Button messagesButton;
         private Button adminButton;
+        private Button viewScheduleButton;
 
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            //updated this to SignIn instead of Main
-            SetContentView(Resource.Layout.Main);
-
-
-            //If the permissions are not set fir the map, then prompt the user for the proper permissions
-            if (CheckCallingOrSelfPermission(Manifest.Permission.AccessCoarseLocation) != Permission.Granted)
+            try
             {
-                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 1);
-            }
+                base.OnCreate(bundle);
+                //updated this to SignIn instead of Main
+                SetContentView(Resource.Layout.Main);
 
-            if (CheckCallingOrSelfPermission(Manifest.Permission.WriteExternalStorage) != Permission.Granted)
-            {
-                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 1);
-            }
 
-            List<Student> availableStudents = Helper.createStudents();
+                //If the permissions are not set fir the map, then prompt the user for the proper permissions
+                if (CheckCallingOrSelfPermission(Manifest.Permission.AccessCoarseLocation) != Permission.Granted)
+                {
+                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 1);
+                }
 
-            campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
-            friendsButton = FindViewById<Button>(Resource.Id.friends);
-            messagesButton = FindViewById<Button>(Resource.Id.messages);
-            adminButton= FindViewById<Button>(Resource.Id.admin);
+                if (CheckCallingOrSelfPermission(Manifest.Permission.WriteExternalStorage) != Permission.Granted)
+                {
+                    ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, 1);
+                }
 
-            //Disable the admin button initially
-            adminButton.Visibility = Android.Views.ViewStates.Invisible;
-            adminButton.Clickable = true;
+                List<Student> availableStudents = Helper.createStudents();
 
-            //This will be used for demonstration purposes. We can fix this later
-            AdminList.Add("andrewb2495@gmail.com");
+                campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
+                friendsButton = FindViewById<Button>(Resource.Id.friends);
+                //messagesButton = FindViewById<Button>(Resource.Id.messages);
+                adminButton = FindViewById<Button>(Resource.Id.admin);
+                viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
 
-            //If the current user is an admin, then display the admin button
-            if (AdminList.Contains(FirebaseAuth.Instance.CurrentUser?.Email) && adminButton != null && _currentEmail != null)
-            {
-                adminButton.Visibility = Android.Views.ViewStates.Visible;
+                //Disable the admin button initially
+                adminButton.Visibility = Android.Views.ViewStates.Invisible;
                 adminButton.Clickable = true;
+
+                //This will be used for demonstration purposes. We can fix this later
+                AdminList.Add("andrewb2495@gmail.com");
+
+                //If the current user is an admin, then display the admin button
+                if (AdminList.Contains(FirebaseAuth.Instance.CurrentUser?.Email) && adminButton != null && _currentEmail != null)
+                {
+                    adminButton.Visibility = Android.Views.ViewStates.Visible;
+                    adminButton.Clickable = true;
+                }
+
+                if (FirebaseAuth.Instance.CurrentUser == null)
+                {
+                    StartActivity(new Android.Content.Intent(this, typeof(SignIn)));
+                }
+
+                if (SignIn.isSignedIn == false)
+                {
+                    firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
+                }
+
+                FirebaseApp.InitializeApp(this);
+                _database = FirebaseDatabase.Instance.Reference;
+
+
+                friendsButton.Click += (sender, e) =>
+                {
+
+                    var intent = new Intent(this, typeof(FriendsList));
+                    StartActivity(intent);
+                };
+
+                adminButton.Click += (sender, e) =>
+                {
+                    var uri = Android.Net.Uri.Parse("https://accounts.google.com/signin/v2/identifier?passive=true&continue=https%3A%2F%2Ffirebase.google.com%2F%3Frefresh%3D1&service=ahsid&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+
+                    var intent = new Intent(Intent.ActionView, uri);
+                    StartActivity(intent);
+                };
+
+                /*
+                messagesButton.Click += (sender, e) =>
+                {
+                    var intent = new Intent(this, typeof(MessageActivity));
+                    StartActivity(intent);
+                };
+                */
+                campusMapButton.Click += (sender, e) =>
+                {
+                    var intent = new Intent(this, typeof(CampusMap));
+                    StartActivity(intent);
+                };
+
+
+                //handling on click of view schedule button(sending to ScheduleActivity)
+                viewScheduleButton.Click += (sender, e) =>
+                {
+                    var intent = new Intent(this, typeof(ScheduleActivity));
+                    StartActivity(intent);
+
+                };
             }
-
-            if (FirebaseAuth.Instance.CurrentUser == null)
+            catch (Exception ex)
             {
-                StartActivity(new Android.Content.Intent(this, typeof(SignIn)));
+
+                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
             }
-
-            if (SignIn.isSignedIn == false)
-            {
-                firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
-            }
-
-            FirebaseApp.InitializeApp(this);
-            _database = FirebaseDatabase.Instance.Reference;
-
-
-            friendsButton.Click += (sender, e) =>
-            {
-
-                var intent = new Intent(this, typeof(FriendsList));
-                StartActivity(intent);
-            };
-
-            adminButton.Click += (sender, e) =>
-            {
-                var uri = Android.Net.Uri.Parse("https://accounts.google.com/signin/v2/identifier?passive=true&continue=https%3A%2F%2Ffirebase.google.com%2F%3Frefresh%3D1&service=ahsid&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
-
-                var intent = new Intent(Intent.ActionView, uri);
-                StartActivity(intent);
-            };
-
-            /*
-            messagesButton.Click += (sender, e) =>
-            {
-                var intent = new Intent(this, typeof(MessageActivity));
-                StartActivity(intent);
-            };
-            */
-            campusMapButton.Click += (sender, e) =>
-            {
-                var intent = new Intent(this, typeof(CampusMap));
-                StartActivity(intent);
-            };
-
-
-            //handling on click of view schedule button(sending to ScheduleActivity)
-            viewScheduleButton.Click += (sender, e) =>
-            {
-                var intent = new Intent(this, typeof(ScheduleActivity));
-                StartActivity(intent);
-
-            };
            
         }
 
