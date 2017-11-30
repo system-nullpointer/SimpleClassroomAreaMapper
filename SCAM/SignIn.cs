@@ -81,9 +81,9 @@ namespace SCAM
 
         //protected override void OnResume()
         //{
-        //    //base.OnResume();
-        //   // var intent = new Intent(this, typeof(MainActivity));
-        //   // StartActivity(intent);
+        //    base.OnResume();
+        //    var intent = new Intent(this, typeof(SignIn));
+        //    StartActivity(intent);
 
         //}
     }

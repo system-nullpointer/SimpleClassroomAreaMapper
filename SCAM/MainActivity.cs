@@ -67,7 +67,14 @@ namespace SCAM
             adminButton.Clickable = true;
 
             //This will be used for demonstration purposes. We can fix this later
-            //AdminList.Add("andrewb2495@gmail.com");
+            AdminList.Add("andrewb2495@gmail.com");
+
+            //If the current user is an admin, then display the admin button
+            if (AdminList.Contains(FirebaseAuth.Instance.CurrentUser?.Email) && adminButton != null && _currentEmail != null)
+            {
+                adminButton.Visibility = Android.Views.ViewStates.Visible;
+                adminButton.Clickable = true;
+            }
 
             if (FirebaseAuth.Instance.CurrentUser == null)
             {
@@ -129,7 +136,7 @@ namespace SCAM
             base.OnResume();
 
             //If the current user is an admin, then display the admin button
-            if (AdminList.Contains(_currentEmail) && adminButton != null && _currentEmail != null)
+            if (AdminList.Contains(FirebaseAuth.Instance.CurrentUser?.Email) && adminButton != null && _currentEmail != null)
             {
                 adminButton.Visibility = Android.Views.ViewStates.Visible;
                 adminButton.Clickable = true;
