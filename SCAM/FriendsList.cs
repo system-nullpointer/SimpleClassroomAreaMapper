@@ -9,24 +9,48 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Firebase;
+using Firebase.Xamarin.Auth;
 
 namespace SCAM
 {
     [Activity(Label = "FriendsList")]
     public class FriendsList : ListActivity
     {
+        private const int SendMessage = 2;
+        private const int RemoveFriend = 1;
+
+        private List<Student> availableStudents;
+
+        private Student demo;
+        public static string currentChatRoom;
+        private ListView friendsList;
+
+        public List<Student> AvailableStudents
+        {
+            get { return availableStudents; }
+            set { availableStudents = value; }
+        }
+
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            Student demo = Student.getStudent();
+
+            FriendPosition = -1;
+
+            demo = Student.getStudent();
             List<Student> availableStudents = Helper.available;
-
-
+            //friendsList = FindViewById<ListView>(Android.Resource.Id.List);
 
             ListAdapter = new ArrayAdapter<Student>(this, Android.Resource.Layout.SimpleListItem1, demo.Friends);
-            // Create your application here
+
+            ListAdapter = new ArrayAdapter<Student>(this, Android.Resource.Layout.SimpleListItem1, demo.Friends);
+
             SetContentView(Resource.Layout.FriendsListLayout);
+            friendsList = FindViewById<ListView>(Android.Resource.Id.List);
+            friendsList.ItemClick += FriendsList_ItemClick;
 
             Button addFriendBtn = FindViewById<Button>(Resource.Id.AddFriendBtn);
             addFriendBtn.Click += (sender, e) =>
@@ -35,12 +59,130 @@ namespace SCAM
                 StartActivity(intent);
             };
 
+            RegisterForContextMenu(ListView);
+
+
         }
+
+        public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
+        {
+            base.OnCreateContextMenu(menu, v, menuInfo);
+
+            menu.SetHeaderTitle("Friend Options");
+            FriendPosition = ((AdapterView.AdapterContextMenuInfo)(menuInfo)).Position;
+
+            menu.Add(0, FriendsList.SendMessage, 0, "Send Message");
+            menu.Add(0, FriendsList.RemoveFriend, 0, "Remove");
+
+        }
+
+        private void FriendsList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            try
+            {
+                List<Student> studentList = Helper.available;
+
+                var vItem = friendsList.GetItemAtPosition(e.Position);
+                String emailMessage = Helper.getEmail(vItem.ToString());
+                if (emailMessage.Contains("."))
+                {
+                    emailMessage = emailMessage.Replace(".", "");
+                }
+                String emailCurrent = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Email;
+
+                if (emailCurrent.Contains("."))
+                {
+                    emailCurrent = emailCurrent.Replace(".", "");
+                }
+                int order = emailCurrent.CompareTo(emailMessage);
+                if (order >= 0)
+                {
+                    currentChatRoom = emailCurrent + emailMessage;
+                }
+                else
+                {
+                    currentChatRoom = emailMessage + emailCurrent;
+                }
+
+
+                StartActivity(typeof(MessageActivity));
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+            }
+           
+
+
+
+        }
+
+        public int FriendPosition { get; set; }
+        public override bool OnContextItemSelected(IMenuItem item)
+        {
+            ArrayAdapter<Student> a = ListAdapter as ArrayAdapter<Student>;
+            switch (item.ItemId)
+            {
+                case SendMessage:
+                    try
+                    {
+                        List<Student> studentList = Helper.available;
+
+                        var vItem = friendsList.GetItemAtPosition(FriendPosition);
+                        String emailMessage = Helper.getEmail(vItem.ToString());
+                        if (emailMessage.Contains("."))
+                        {
+                            emailMessage = emailMessage.Replace(".", "");
+                        }
+                        String emailCurrent = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Email;
+
+                        if (emailCurrent.Contains("."))
+                        {
+                            emailCurrent = emailCurrent.Replace(".", "");
+                        }
+                        int order = emailCurrent.CompareTo(emailMessage);
+                        if (order >= 0)
+                        {
+                            currentChatRoom = emailCurrent + emailMessage;
+                        }
+                        else
+                        {
+                            currentChatRoom = emailMessage + emailCurrent;
+                        }
+
+
+                        StartActivity(typeof(MessageActivity));
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+                    }
+                    return true;
+                case RemoveFriend:
+                    if (FriendPosition < a.Count && FriendPosition >= 0)
+                    {
+                        demo.Friends.RemoveAt(FriendPosition);
+                        a.Remove(a.GetItem(FriendPosition));
+                        return true;
+                    }
+                    return false;
+                default:
+                    return base.OnContextItemSelected(item);
+            }
+        }
+
+
+
+
         protected override void OnResume()
         {
             base.OnResume();
             Student demo = Student.getStudent();
             ListAdapter = new ArrayAdapter<Student>(this, Android.Resource.Layout.SimpleListItem1, demo.Friends);
         }
+
+
+
+
     }
 }

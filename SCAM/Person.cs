@@ -31,6 +31,7 @@ namespace SCAM
         }
 
         private string _id;
+        private string _email;
 
         public string ID
         {
@@ -41,6 +42,11 @@ namespace SCAM
         public Person()
         {
 
+        }
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
         }
 
         public override string ToString()

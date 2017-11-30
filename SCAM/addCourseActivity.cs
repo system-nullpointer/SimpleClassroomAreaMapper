@@ -9,11 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Content.PM;
 using Newtonsoft.Json;
 
 namespace SCAM
 {
-    [Activity(Label = "Add Course Activity")]
+    [Activity(Label = "Add Course Activity", ScreenOrientation = ScreenOrientation.Portrait)]
     public class addCourseActivity : Activity
     {
         Student student;

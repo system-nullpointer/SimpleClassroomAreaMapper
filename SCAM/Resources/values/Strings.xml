@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="firebase_database_url">https://simpleclassroomareamapper.firebaseio.com</string>
-    <string name="ApplicationName">SCAM</string>
+  <string name="firebase_database_url">https://simpleclassroomareamapper.firebaseio.com</string>
+  <string name="ApplicationName">SCAM</string>
+
 </resources>
