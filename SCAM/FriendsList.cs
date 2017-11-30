@@ -9,11 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Content.PM;
+using Firebase;
+using Firebase.Xamarin.Auth;
 
 namespace SCAM
 {
-    [Activity(Label = "FriendsList", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "FriendsList")]
     public class FriendsList : ListActivity
     {
         private const int SendMessage = 2;
@@ -22,6 +23,8 @@ namespace SCAM
         private List<Student> availableStudents;
 
         private Student demo;
+        public static string currentChatRoom;
+        private ListView friendsList;
 
         public List<Student> AvailableStudents
         {
@@ -33,17 +36,21 @@ namespace SCAM
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            demo = Student.getStudent();
+
 
             FriendPosition = -1;
 
-            availableStudents = Helper.available;
+            demo = Student.getStudent();
+            List<Student> availableStudents = Helper.available;
+            //friendsList = FindViewById<ListView>(Android.Resource.Id.List);
 
             ListAdapter = new ArrayAdapter<Student>(this, Android.Resource.Layout.SimpleListItem1, demo.Friends);
 
+            ListAdapter = new ArrayAdapter<Student>(this, Android.Resource.Layout.SimpleListItem1, demo.Friends);
 
-            // Create your application here
             SetContentView(Resource.Layout.FriendsListLayout);
+            friendsList = FindViewById<ListView>(Android.Resource.Id.List);
+            friendsList.ItemClick += FriendsList_ItemClick;
 
             Button addFriendBtn = FindViewById<Button>(Resource.Id.AddFriendBtn);
             addFriendBtn.Click += (sender, e) =>
@@ -68,6 +75,48 @@ namespace SCAM
             menu.Add(0, FriendsList.RemoveFriend, 0, "Remove");
 
         }
+
+        private void FriendsList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            try
+            {
+                List<Student> studentList = Helper.available;
+
+                var vItem = friendsList.GetItemAtPosition(e.Position);
+                String emailMessage = Helper.getEmail(vItem.ToString());
+                if (emailMessage.Contains("."))
+                {
+                    emailMessage = emailMessage.Replace(".", "");
+                }
+                String emailCurrent = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Email;
+
+                if (emailCurrent.Contains("."))
+                {
+                    emailCurrent = emailCurrent.Replace(".", "");
+                }
+                int order = emailCurrent.CompareTo(emailMessage);
+                if (order >= 0)
+                {
+                    currentChatRoom = emailCurrent + emailMessage;
+                }
+                else
+                {
+                    currentChatRoom = emailMessage + emailCurrent;
+                }
+
+
+                StartActivity(typeof(MessageActivity));
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+            }
+           
+
+
+
+        }
+
         public int FriendPosition { get; set; }
         public override bool OnContextItemSelected(IMenuItem item)
         {
@@ -75,7 +124,39 @@ namespace SCAM
             switch (item.ItemId)
             {
                 case SendMessage:
-                    Toast.MakeText(this.ApplicationContext, "Direct messaging is not yet implemented", ToastLength.Short).Show();
+                    try
+                    {
+                        List<Student> studentList = Helper.available;
+
+                        var vItem = friendsList.GetItemAtPosition(FriendPosition);
+                        String emailMessage = Helper.getEmail(vItem.ToString());
+                        if (emailMessage.Contains("."))
+                        {
+                            emailMessage = emailMessage.Replace(".", "");
+                        }
+                        String emailCurrent = Firebase.Auth.FirebaseAuth.Instance.CurrentUser.Email;
+
+                        if (emailCurrent.Contains("."))
+                        {
+                            emailCurrent = emailCurrent.Replace(".", "");
+                        }
+                        int order = emailCurrent.CompareTo(emailMessage);
+                        if (order >= 0)
+                        {
+                            currentChatRoom = emailCurrent + emailMessage;
+                        }
+                        else
+                        {
+                            currentChatRoom = emailMessage + emailCurrent;
+                        }
+
+
+                        StartActivity(typeof(MessageActivity));
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.MakeText(this, ex.Message, ToastLength.Long).Show();
+                    }
                     return true;
                 case RemoveFriend:
                     if (FriendPosition < a.Count && FriendPosition >= 0)

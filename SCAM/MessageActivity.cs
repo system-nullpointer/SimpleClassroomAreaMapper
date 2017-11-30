@@ -26,28 +26,53 @@ namespace SCAM
         private ListView lstChat;
         private EditText edtChat;
         private FloatingActionButton fab;
+
+        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Messaging);
-            firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
-            FirebaseDatabase.Instance.GetReference("chats").AddValueEventListener(this);
 
-            fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            edtChat = FindViewById<EditText>(Resource.Id.input);
-            lstChat = FindViewById<ListView>(Resource.Id.list_of_messages);
-
-            fab.Click += delegate
+            try
             {
-                PostMessage();
-            };            
+                base.OnCreate(savedInstanceState);
+                SetContentView(Resource.Layout.Messaging);
+                firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
+                FirebaseDatabase.Instance.GetReference(FriendsList.currentChatRoom).AddValueEventListener(this);
+
+                fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+                edtChat = FindViewById<EditText>(Resource.Id.input);
+                lstChat = FindViewById<ListView>(Resource.Id.list_of_messages);
+
+                fab.Click += delegate
+                {
+                    PostMessage();
+                };
+            }
+            catch (Exception e)
+            {
+
+                Toast.MakeText(this, e.Message, ToastLength.Long).Show();
+
+            }
+
 
         }
 
         private async void PostMessage()
         {
-            var items = await firebase.Child("chats").PostAsync(new MessageContent(FirebaseAuth.Instance.CurrentUser.Email, edtChat.Text));
-            edtChat.Text = "";
+            try
+            {
+                var items = await firebase.Child(FriendsList.currentChatRoom).PostAsync(new MessageContent(FirebaseAuth.Instance.CurrentUser.Email, edtChat.Text));
+                edtChat.Text = "";
+
+            }
+            catch (Exception e)
+            {
+
+                Toast.MakeText(this, e.Message, ToastLength.Long).Show();
+
+            }
+
         }
 
         public void OnCancelled(DatabaseError error)
@@ -62,14 +87,26 @@ namespace SCAM
 
         private async void DisplayChatMessage()
         {
-            lstMessage.Clear();
-            var items = await firebase.Child("chats")
-                .OnceAsync<MessageContent>();
 
-            foreach (var item in items)
-                lstMessage.Add(item.Object);
-            ListViewAdapter adapter = new ListViewAdapter(this, lstMessage);
-            lstChat.Adapter = adapter;
+
+            try
+            {
+                lstMessage.Clear();
+                var items = await firebase.Child(FriendsList.currentChatRoom)
+                    .OnceAsync<MessageContent>();
+
+                foreach (var item in items)
+                    lstMessage.Add(item.Object);
+                ListViewAdapter adapter = new ListViewAdapter(this, lstMessage);
+                lstChat.Adapter = adapter;
+            }
+            catch (Exception e)
+            {
+
+                Toast.MakeText(this, e.Message, ToastLength.Long).Show();
+
+            }
+
         }
 
 

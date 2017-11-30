@@ -34,7 +34,7 @@ namespace SCAM
 
         private Button campusMapButton;
         private Button friendsButton;
-        private Button messagesButton;
+        //private Button messagesButton;
         private Button adminButton;
 
         protected override void OnCreate(Bundle bundle)
@@ -105,21 +105,19 @@ namespace SCAM
                 StartActivity(intent);
             };
 
-
+            /*
             messagesButton.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(MessageActivity));
                 StartActivity(intent);
             };
-
+            */
             campusMapButton.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(CampusMap));
                 StartActivity(intent);
             };
 
-            //button object of view schedule
-            Button viewScheduleButton = FindViewById<Button>(Resource.Id.viewSchedule);
 
             //handling on click of view schedule button(sending to ScheduleActivity)
             viewScheduleButton.Click += (sender, e) =>
