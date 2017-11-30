@@ -54,7 +54,7 @@ namespace SCAM
                             .SetMessage("Course Not Found!")
                             .SetPositiveButton("OK", delegate { this.Finish(); })
                             .Show();
-                    StartActivity(typeof(addCourseActivity));
+                    StartActivity(typeof(ScheduleActivity));
                 }
 
                 
@@ -74,11 +74,12 @@ namespace SCAM
             };
 
         }
-    
-        
+
         public override void OnBackPressed()
         {
-            StartActivity(typeof(ScheduleActivity));
+            //base.OnBackPressed();
+            //StartActivity(typeof(ScheduleActivity));
+            Finish();
         }
         
     }

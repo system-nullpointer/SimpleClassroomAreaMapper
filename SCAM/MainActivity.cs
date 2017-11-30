@@ -37,7 +37,7 @@ namespace SCAM
             SetContentView(Resource.Layout.Main);
 
             firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
-            
+
             List<Student> availableStudents = Helper.createStudents();
             Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
             Button friendsButton = FindViewById<Button>(Resource.Id.friends);
@@ -72,7 +72,7 @@ namespace SCAM
                 var intent = new Intent(this, typeof(CampusMap));
                 StartActivity(intent);
             };
-           
+
 
             //handling on click of view schedule button(sending to ScheduleActivity)
             viewScheduleButton.Click += (sender, e) =>
@@ -83,9 +83,9 @@ namespace SCAM
             };
 
 
-            
+
             //if (FirebaseAuth.Instance.CurrentUser == null)
-                StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
+            StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             /*
             else
             {  
@@ -95,13 +95,16 @@ namespace SCAM
             }
             */   
         }
-        protected override void OnResume()
+        
+        public void OnResume()
         {
+            base.OnResume();
             SetContentView(Resource.Layout.Main);
         }
 
+    
 
-
+        
     }
 }
 

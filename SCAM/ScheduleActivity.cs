@@ -22,18 +22,9 @@ namespace SCAM
             protected override void OnCreate(Bundle savedInstanceState)
             {
                 base.OnCreate(savedInstanceState);
-
-                //populates list for viewSchedule
-                // ListAdapter = new ArrayAdapter<Course>(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
+            
                 SetContentView(Resource.Layout.viewSchedule);
-
-                /*List<String> courses = new List<String>();
-
-                foreach (var item in student.Courses)
-                {
-                    courses.Add(item.ToString());
-                }
-                */
+                //populates list for viewSchedule
                 ListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
            
 
@@ -49,19 +40,19 @@ namespace SCAM
 
             }
         
-        protected override void OnResume()
+        public void OnResume()
         {
-            
+            base.OnResume();
             ListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
             SetContentView(Resource.Layout.viewSchedule);
             addNewCourseButton = FindViewById<Button>(Resource.Id.addNewCourseButton);
         }
-
         public override void OnBackPressed()
         {
+            //base.OnBackPressed();
             StartActivity(typeof(MainActivity));
+            Finish();
         }
- 
     }
 
 }
