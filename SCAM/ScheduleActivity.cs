@@ -9,53 +9,59 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 
 namespace SCAM
 {
     [Activity(Label = "Current Schedule")]
     public class ScheduleActivity : ListActivity
         {
-            Course[] items;
-            string[] itemName;
-
+            
+            Student student = Student.getStudent();
+            Button addNewCourseButton;
             protected override void OnCreate(Bundle savedInstanceState)
             {
                 base.OnCreate(savedInstanceState);
 
-                Student student = Student.getStudent();
-
                 //populates list for viewSchedule
                 // ListAdapter = new ArrayAdapter<Course>(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
                 SetContentView(Resource.Layout.viewSchedule);
-                List<String> course = new List<String>();
+
+                /*List<String> courses = new List<String>();
 
                 foreach (var item in student.Courses)
                 {
-                    course.Add(item.ToString());
+                    courses.Add(item.ToString());
                 }
-
-                ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, course);
+                */
+                ListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
            
 
-                Button addCourseButton = FindViewById<Button>(Resource.Id.addNewCourseButton);    
+                addNewCourseButton = FindViewById<Button>(Resource.Id.addNewCourseButton);    
 
             
-                addCourseButton.Click += (sender, e) =>
+                addNewCourseButton.Click += (sender, e) =>
                 {
                     var intent = new Intent(this, typeof(addCourseActivity));
+                    //intent.PutExtra("Student", JsonConvert.SerializeObject(student));
                     StartActivity(intent);
-                    Finish();
                 };               
 
-             }
-
-            public override void OnBackPressed()
-            {
-                base.OnBackPressed();
-                //var intent = new Intent(this, typeof(MainActivity));
-                //StartActivity(intent);
-                Finish();
             }
+        
+        protected override void OnResume()
+        {
+            
+            ListAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, student.Courses);
+            SetContentView(Resource.Layout.viewSchedule);
+            addNewCourseButton = FindViewById<Button>(Resource.Id.addNewCourseButton);
+        }
+
+        public override void OnBackPressed()
+        {
+            StartActivity(typeof(MainActivity));
+        }
+ 
     }
-    
+
 }

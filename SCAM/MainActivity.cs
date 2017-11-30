@@ -18,6 +18,7 @@ namespace SCAM
     [Activity(Label = "SCAM", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light")]
     public class MainActivity : AppCompatActivity//, IValueEventListener
     {
+        
         private FirebaseClient firebase;
 
         public int MyResultCode = 1;
@@ -30,11 +31,13 @@ namespace SCAM
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            //Keep this here, should prevent Firebase not initialized error that's been causing us to clean/rebuild
+            FirebaseApp.InitializeApp(this);
             //updated this to SignIn instead of Main
             SetContentView(Resource.Layout.Main);
 
             firebase = new FirebaseClient(GetString(Resource.String.firebase_database_url));
-            FirebaseApp.InitializeApp(this);
+            
             List<Student> availableStudents = Helper.createStudents();
             Button campusMapButton = FindViewById<Button>(Resource.Id.campusMap);
             Button friendsButton = FindViewById<Button>(Resource.Id.friends);
@@ -91,6 +94,10 @@ namespace SCAM
                 StartActivityForResult(new Android.Content.Intent(this, typeof(SignIn)), MyResultCode);
             }
             */   
+        }
+        protected override void OnResume()
+        {
+            SetContentView(Resource.Layout.Main);
         }
 
 

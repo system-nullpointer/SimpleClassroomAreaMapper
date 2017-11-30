@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="CRN:"
+        android:text="Course ('deptID number-section'):"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,50 +12,15 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/CRNText" />
-    <TextView
-        android:text="Course Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/courseNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/courseNameText" />
-    <TextView
-        android:text="Building Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buildingNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buildingNameText" />
-    <TextView
-        android:text="Room Number:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNumberLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/roomNumberText" />
-    <TextView
-        android:text="Instructor Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructorNameLabel" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructorNameText" />
+        android:id="@+id/CourseIDText" />
     <Button
-        android:text="Add"
+        android:text="Add Course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/addToCoursesButton" />
+        android:id="@+id/addCourseButton" />
+    <Button
+        android:text="Import Active Registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/importCoursesButton" />
 </LinearLayout>

@@ -145,11 +145,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveRegistration.cs" />
     <Compile Include="addCourseActivity.cs" />
     <Compile Include="AddFriend.cs" />
     <Compile Include="CampusMap.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="FriendsList.cs" />
+    <Compile Include="Goldlink.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ListViewAdapter.cs" />
     <Compile Include="MainActivity.cs" />

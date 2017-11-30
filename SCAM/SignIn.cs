@@ -26,12 +26,12 @@ namespace SCAM
             if (task.IsSuccessful)
             {
                 Toast.MakeText(this, "Welcome " + FirebaseAuth.Instance.CurrentUser.Email, ToastLength.Short).Show();
-                Toast.MakeText(this, "SignIn successfully !", ToastLength.Short).Show();
+                Toast.MakeText(this, "Sign In successful!", ToastLength.Short).Show();
                 Finish();
             }
             else
             {
-                Toast.MakeText(this, "SignIn failed!", ToastLength.Short).Show();                
+                Toast.MakeText(this, "Sign In failed!", ToastLength.Short).Show();                
             }
         }
         protected override void OnCreate(Bundle savedInstanceState)
