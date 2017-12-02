@@ -169,13 +169,13 @@ namespace SCAM
             //Not sure what to do about OnCancelled
             throw new NotImplementedException();
         }
-        
+        /*
         public void OnResume()
         {
             base.OnResume();
             SetContentView(Resource.Layout.Main);
         }
-
+        */
         public void GetChildren(DataSnapshot snapshot)
         {
             if (snapshot == null) return;
